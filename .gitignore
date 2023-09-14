@@ -397,3 +397,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 MS SQL - 2023/.DS_Store
+.DS_Store
+MS SQL - 2023/T03_DatabasesIntroduction/T03_DatabasesIntroduction.pdf
+MS SQL - 2023/T03_DatabasesIntroduction/T03_DatabasesIntroduction_InstallationGuide_DockerDesctop.docx
+MS SQL - 2023/T03_DatabasesIntroduction/T03_DatabasesIntroduction_InstallationGuide_SQLServer.docx

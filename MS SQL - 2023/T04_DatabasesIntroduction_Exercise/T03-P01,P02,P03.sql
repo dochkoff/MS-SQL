@@ -1,0 +1,20 @@
+--P01
+CREATE DATABASE [Minions]
+
+--P02
+CREATE TABLE [Minions]
+(
+    [Id] INT PRIMARY KEY,
+    [Name] NVARCHAR(50) NOT NULL,
+    [Age] INT
+)
+
+CREATE TABLE [Towns]
+(
+    [Id] INT PRIMARY KEY,
+    [Name] NVARCHAR(50) NOT NULL,
+)
+
+--P03
+ALTER TABLE [Minions]
+ADD [TownId] INT FOREIGN KEY REFERENCES [Towns]([Id])

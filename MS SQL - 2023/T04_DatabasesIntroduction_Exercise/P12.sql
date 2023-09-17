@@ -1,0 +1,9 @@
+ALTER TABLE [Users]
+DROP CONSTRAINT PK_Person
+
+ALTER TABLE [Users]
+ADD CONSTRAINT UQ_Username UNIQUE ([Username])
+
+ALTER TABLE [Users]
+ADD CONSTRAINT CK_Username_Lenght
+CHECK (LEN(Username) >= 3)

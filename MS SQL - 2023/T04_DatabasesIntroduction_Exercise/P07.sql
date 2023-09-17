@@ -12,7 +12,7 @@ CREATE TABLE [People]
     [Biography] NVARCHAR(MAX)
 )
 
-INSERT INTO [People]([Name],[Gender],Birthdate)
+INSERT INTO [People]([Name],[Gender],[Birthdate])
     VALUES
     ('Pavel', 'm', '1990-10-12'),
     ('Martin','m','1988-03-02'),

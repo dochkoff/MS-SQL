@@ -1,0 +1,3 @@
+ALTER TABLE [Users]
+ADD CONSTRAINT CK_Pass
+CHECK (DATALENGTH([Password]) >= 5)

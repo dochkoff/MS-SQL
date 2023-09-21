@@ -1,0 +1,7 @@
+--P14
+SELECT * FROM Projects
+WHERE EndDate IS NULL
+
+UPDATE Projects
+SET EndDate=GETDATE()
+WHERE EndDate IS NULL

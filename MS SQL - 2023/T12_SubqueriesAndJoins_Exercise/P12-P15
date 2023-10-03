@@ -1,0 +1,45 @@
+--P12
+SELECT
+    mc.CountryCode,
+    m.MountainRange,
+    p.PeakName,
+    p.Elevation
+FROM
+    Peaks AS p
+    INNER JOIN Mountains AS m ON m.Id = p.MountainId
+    INNER JOIN MountainsCountries AS mc ON mc.MountainId = m.Id
+WHERE
+mc.CountryCode = 'BG' AND p.Elevation > 2835
+ORDER BY
+p. Elevation DESC;
+
+--P13
+SELECT CountryCode, COUNT(DISTINCT MountainRange) AS MountainRanges
+FROM (
+    SELECT mc.CountryCode, m.MountainRange   
+    FROM MountainsCountries AS mc
+    JOIN Mountains AS m ON m.Id = mc.MountainId
+    WHERE mc.CountryCode IN ('BG','US','RU')
+) AS CoreQuery
+GROUP BY CountryCode;
+
+--P14
+SELECT TOP(5) CountryName, r.RiverName
+FROM Countries AS c
+    LEFT JOIN CountriesRivers AS cr ON cr.CountryCode = c.CountryCode
+    LEFT JOIN Rivers AS r ON cr.RiverId = r.Id
+WHERE ContinentCode = 'AF'
+ORDER BY CountryName
+
+--P15
+SELECT ContinentCode, CurrencyCode, CurrencyUsage
+FROM
+    (SELECT *,
+    DENSE_RANK() OVER (PARTITION BY ContinentCode ORDER BY CurrencyUsage DESC) AS CurremcyRank
+    FROM
+        (SELECT ContinentCode, CurrencyCode, COUNT(CurrencyCode) AS CurrencyUsage
+        FROM Countries
+        GROUP BY ContinentCode, CurrencyCode) AS CoreQuery
+    Where CurrencyUsage > 1) AS SocondSubQuery
+WHERE CurremcyRank = 1
+ORDER BY ContinentCode

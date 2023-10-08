@@ -1,0 +1,41 @@
+-- --P09
+-- CREATE PROC usp_GetHoldersFullName
+-- AS
+-- BEGIN
+--     SELECT FirstName + ' ' + LastName AS [Full Name]
+--     FROM AccountHolders
+-- END
+
+-- --P10
+-- CREATE PROC usp_GetHoldersWithBalanceHigherThan(@totalMoney DECIMAL(10,2))
+-- AS
+-- BEGIN
+--     SELECT FirstName AS [First Name], LastName As [Last Name]
+--     FROM AccountHolders AS ah
+--     LEFT JOIN Accounts As a ON a.AccountHolderId=ah.Id
+--     GROUP BY ah.Id, FirstName, LastName
+--     HAVING SUM(Balance) > @totalMoney
+--     ORDER BY FirstName, LastName
+-- END
+
+-- --P11
+-- CREATE OR ALTER FUNCTION ufn_CalculateFutureValue(@initSum DECIMAL(18,2), @yir FLOAT, @years INT)
+-- RETURNS DECIMAL(16,4)
+-- AS
+-- BEGIN
+--     DECLARE @result FLOAT
+--     SET @result= @initSum * (POWER(1 + @yir, @years))
+--     RETURN @result
+-- END
+
+-- --P12
+-- CREATE OR ALTER PROCEDURE usp_CalculateFutureValueForAccount (@AccountId INT, @InterestRate FLOAT)
+-- AS
+-- BEGIN
+--     DECLARE @Years INT = 5
+--     SELECT a.Id [Account Id], ah.FirstName, ah.LastName, a.Balance,
+--     dbo.ufn_CalculateFutureValue (a.Balance, @InterestRate, @Years) [Balance in 5 years]
+--     FROM AccountHolders ah
+--     JOIN Accounts a ON a.AccountHolderId = ah.Id
+--     WHERE a.Id = 1
+-- END

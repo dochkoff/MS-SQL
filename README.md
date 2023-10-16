@@ -18,4 +18,4 @@ Databases are the standard way of utilizing dynamic information in modern techno
 
 ## Course certificate
 
-![C# OOP - February 2023 - Certificate]()
+![Certificate MS SQL](https://github.com/dochkoff/MS-SQL/assets/74410756/389674b2-7134-4842-8520-313de1c46db7)
